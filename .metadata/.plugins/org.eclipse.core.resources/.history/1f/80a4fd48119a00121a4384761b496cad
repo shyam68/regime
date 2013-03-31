@@ -1,0 +1,46 @@
+// A program to demonstrate the use of JTextFields's
+//Import Statements
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Main extends JFrame {
+
+	//Class Declarations
+	JTextField heading;
+	String disp = "";
+	TextHandler handler = null;
+	//Constructor
+	public Main() {
+		super("Regime startup.....");
+		Container container = getContentPane();
+		container.setLayout(new FlowLayout());
+		
+		heading = new JTextField("Uneditable text field", 20);
+		heading.setEditable(false);
+		container.add(heading);
+
+		handler = new TextHandler();
+		jtfText1.addActionListener(handler);
+		jtfUneditableText.addActionListener(handler);
+		setSize(500, 600);
+		setVisible(true);
+	}
+	//Inner Class TextHandler
+	private class TextHandler implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == jtfText1) {
+				disp = "text1 : " + e.getActionCommand();
+			} else if (e.getSource() == jtfUneditableText) {
+				disp = "text3 : " + e.getActionCommand();
+			}
+			JOptionPane.showMessageDialog(null, disp);
+		}
+	}
+	//Main Program that starts Execution
+	public static void main(String args[]) {
+		Main test = new Main();
+		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}// End of class TextFieldTest

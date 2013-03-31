@@ -1,0 +1,47 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Main extends JFrame {
+
+	JTextField heading;
+	JButton init;
+	String displayText = "";
+	TextHandler handler = null;
+	
+	public Main() {
+		super("Regime startup.....");
+		Container container = getContentPane();
+		container.setLayout(new FlowLayout());
+		
+		heading = new JTextField("Choose your option..", 20);
+		heading.setEditable(false);
+		container.add(heading);
+
+		
+		handler = new TextHandler();
+		init = new JButton("init");
+		
+		init.setVerticalTextPosition(AbstractButton.BOTTOM);
+		init.setHorizontalTextPosition(AbstractButton.LEADING);
+		init.addActionListener(handler);
+		container.add(init);
+		
+		setSize(500, 600);
+		setVisible(true);
+	}
+	
+	private class TextHandler implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			
+				displayText = "text1 : " + e.getActionCommand();
+				JOptionPane.showMessageDialog(null, displayText);
+		}
+	}
+	
+	public static void main(String args[]) {
+		Main test = new Main();
+		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}

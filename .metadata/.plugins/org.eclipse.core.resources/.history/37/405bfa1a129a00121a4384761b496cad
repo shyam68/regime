@@ -1,0 +1,53 @@
+// A program to demonstnirate tndlerhe use of JTextFields's
+//Import Statements
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Main extends JFrame {
+
+	//Class Declarations
+	JTextField heading;
+	JButton init;
+	String disp = "";
+	TextHandler handler = null;
+	//Constructor
+	public Main() {
+		super("Regime startup.....");
+		Container container = getContentPane();
+		container.setLayout(new FlowLayout());
+		
+		heading = new JTextField("Choose your option..", 20);
+		heading.setEditable(false);
+		container.add(heading);
+
+		
+		handler = new TextHandler();
+		init = new JButton();
+		init.addActionListener(handler);
+		container.add(init);
+		
+		setSize(500, 600);
+		setVisible(true);
+	}
+	//Inner Class TextHandler
+	private class TextHandler implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			
+				disp = "text1 : " + e.getActionCommand();
+			
+
+
+			
+			
+
+			JOptionPane.showMessageDialog(null, disp);
+		}
+	}
+	//Main Program that starts Execution
+	public static void main(String args[]) {
+		Main test = new Main();
+		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}// End of class TextFieldTest
